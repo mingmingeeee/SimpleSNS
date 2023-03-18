@@ -1,7 +1,8 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '2.7.9'
+	id 'org.springframework.boot' version '2.6.7'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id "com.github.node-gradle.node" version "3.3.0"
 }
 
 group = 'com.min'
@@ -32,3 +33,30 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+node {
+	nodeModulesDir = file("$projectDir/front-end")
+	version = '18.3.0'
+	download = true
+}
+
+task npmBuild(type: NpmTask) { // react build할 때를 설정
+	args = ['run', "build"]
+}
+
+task copyFrontEnd(type: Copy) { // build file들을 static안에 프로젝트 static안에 넣겠다~
+	from "$projectDir/front-end/static"
+	into 'build/resources/main/static/.'
+}
+
+task cleanFrontEnd(type: Delete) { // clean이 일어날 때 파일 삭제
+	delete "$projectDir/front-end/static", "$projectDir/front-end/node_modules"
+}
+
+// chain dependency 걸어줌
+npmBuild.dependsOn npmInstall
+copyFrontEnd.dependsOn npmBuild
+compileJava.dependsOn copyFrontEnd
+
+// clean dependency 걸어줌
+clean.dependsOn cleanFrontEnd
