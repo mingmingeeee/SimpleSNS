@@ -27,6 +27,12 @@ public class UserService {
     @Value("${jwt.token.expired-time-ms}")
     private long expiredTimeMs;
 
+    public User loadUserByUserName(String userMame) {
+        return userEntityRepository.findByUserName(userMame).map(User::fromEntity).orElseThrow(() ->
+                new SnsApplicationException(ErrorCode.USER_NOT_FOUND, String.format("%s not founded", userMame))
+        );
+    }
+
     @Transactional
     public User join(String userName, String password) {
         // 회원 가입 하려는 userName으로 회원가입된 user가 있는지 체크
