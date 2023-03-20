@@ -59,9 +59,9 @@ task cleanFrontEnd(type: Delete) { // clean이 일어날 때 파일 삭제
 }
 
 // chain dependency 걸어줌
-//npmBuild.dependsOn npmInstall
-//copyFrontEnd.dependsOn npmBuild
-//compileJava.dependsOn copyFrontEnd
+npmBuild.dependsOn npmInstall
+copyFrontEnd.dependsOn npmBuild
+compileJava.dependsOn copyFrontEnd
 
 // clean dependency 걸어줌
-//clean.dependsOn cleanFrontEnd
+clean.dependsOn cleanFrontEnd
