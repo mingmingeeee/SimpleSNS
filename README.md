@@ -9,6 +9,7 @@ CloudType 사용 (https://cloudtype.io/)
 ### Redis
 DB: query | Cashing: Key-value
 - Caching: DB에 부하를 주지 않으면서 더 쉽게 데이터를 가져올 수 있는 방법
+- In-memory database: 데이터 휘발성, cache로 사용하는 경우에는 DB에 원본 데이터가 있으므로 큰 문제는 없음 but 죽었을 때 순간적으로 부하 높아질 것
 
 |??|Redis|Local Caching|
 |---|---|---|
