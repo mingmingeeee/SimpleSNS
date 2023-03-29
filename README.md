@@ -9,7 +9,7 @@ CloudType 사용 (https://cloudtype.io/)
 DB: query | Cashing: Key-value
 - Caching: DB에 부하를 주지 않으면서 더 쉽게 데이터를 가져올 수 있는 방법
 
-|?|Redis|Local Caching|
+|??|Redis|Local Caching|
 |---|---|---|
 |특징|In-memory database, key-value 형태의 데이터베이스, single thread|서버 내에 caching|
 |장점|여러 instance가 하나의 데이터 공유 가능, 일반 DB보다 빠름|네트워크 타지 않기 때문에 Reids에 비해 빠름|
