@@ -5,6 +5,7 @@
 ## 배포
 CloudType 사용 (https://cloudtype.io/)
 
+## 사용 기술
 ### Redis
 DB: query | Cashing: Key-value
 - Caching: DB에 부하를 주지 않으면서 더 쉽게 데이터를 가져올 수 있는 방법
