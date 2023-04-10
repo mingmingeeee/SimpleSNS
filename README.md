@@ -20,22 +20,22 @@ DB: query | Cashing: Key-value
 
 ## 대규모 트래픽시 고려사항
 ### 기존 문제점 
-[ ] token 인증시 User 조회, 그 이후 또 user 조회
+- [ ] token 인증시 User 조회, 그 이후 또 user 조회
 => 인증 과정에서 2번의 DB I/O 발생
 (1) token에서 username 추출, "username" DB에서 조회
 (2) create할 때 또 userName으로 DB I/O 발생
 
-[ ] 매 API 요청시마다 User 조회
+- [ ] 매 API 요청시마다 User 조회
 어떤 작업이 cost, 부하가 많이 드는지 고려하기
 
-[ ] Alarm까지 생성해야 응답하는 API (LIKE)
+- [ ] Alarm까지 생성해야 응답하는 API (LIKE)
 현재는 alarm이 like까지 다 save된 상태에서 일어나는 작업이기 때문에 너무 결속됨
 조금의 지연이 일어나도 괜찮음 => 분리시키기
 
-[ ] Alarm List API를 호출해야만 갱신되는 알람 목록 (새로고침해야 알람이 있음)
+- [ ] Alarm List API를 호출해야만 갱신되는 알람 목록 (새로고침해야 알람이 있음)
 업데이트가 없을 수도 있는데 계속 해줘야 해서 서버 부하 있을 듯
 
-[ ] DB Query들이 최적화 되어있을까나
+- [ ] DB Query들이 최적화 되어있을까나
 JPA (객체화): Query를 직접 작성하는 게 아니라
 Entity들 바탕으로, Method 바탕으로 생성되어 날아감
 연관 관계 설정한게 내가 원하는 대로 fetch, join돼서 날아가고 있을까 check 필요
