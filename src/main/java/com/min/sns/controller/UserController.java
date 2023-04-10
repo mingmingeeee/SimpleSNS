@@ -6,8 +6,11 @@ import com.min.sns.controller.response.AlarmResponse;
 import com.min.sns.controller.response.Response;
 import com.min.sns.controller.response.UserJoinResponse;
 import com.min.sns.controller.response.UserLoginResponse;
+import com.min.sns.exception.ErrorCode;
+import com.min.sns.exception.SnsApplicationException;
 import com.min.sns.model.User;
 import com.min.sns.service.UserService;
+import com.min.sns.util.ClassUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -36,7 +39,16 @@ public class UserController {
 
     @GetMapping("/alarm")
     public Response<Page<AlarmResponse>> alarm(Pageable pageable, Authentication authentication) {
-        return Response.success(userService.alarmList(authentication.getName(), pageable).map(AlarmResponse::fromAlarm));
+        User user = ClassUtils.getSafeCastInstance(authentication.getPrincipal(), User.class).orElseThrow(() -> new SnsApplicationException(ErrorCode.INTERNAL_SERVER_ERROR,
+                "{Casting to User class failed}"));
+        return Response.success(userService.alarmList(user.getId(), pageable).map(AlarmResponse::fromAlarm));
     }
 
 }
+
+/*
+*
+* userEntity가 아니라 userId로 가져오기
+* Entity하면 join이 발생하니까!
+*
+* */

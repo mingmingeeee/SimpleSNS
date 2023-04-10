@@ -13,5 +13,5 @@ import java.util.List;
 
 @Repository
 public interface AlarmRepository extends JpaRepository<AlarmEntity, Long> {
-    Page<AlarmEntity> findAllByUser(UserEntity user, Pageable pageable);
+    Page<AlarmEntity> findAllByUserId(Integer userId, Pageable pageable);
 }
