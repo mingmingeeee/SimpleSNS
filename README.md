@@ -20,7 +20,7 @@ DB: query | Cashing: Key-value
 
 ## 대규모 트래픽시 고려사항
 ### 기존 문제점 
-[ ] token 인증시 User 조회, 그 이후 또 user 조회
+[x] token 인증시 User 조회, 그 이후 또 user 조회
 => 인증 과정에서 2번의 DB I/O 발생
 (1) DB에 User 있는지 확인
 token에서 username 추출, "username" DB에서 조회
