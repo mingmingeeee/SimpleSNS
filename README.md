@@ -51,7 +51,7 @@ DB select, 외부 API call과 같은 무거운 작업들일 때 중복된 것 �
 
 1. Cache(Redis) 사용
 변하지 않는 데이터들 조회 위해 캐시 사용
-!(https://user-images.githubusercontent.com/45472076/230905903-2fa08302-d71e-40be-bf15-13ad7db9290e.PNG)
+![4545](https://user-images.githubusercontent.com/45472076/230905903-2fa08302-d71e-40be-bf15-13ad7db9290e.PNG)
 
 2. Kafka 사용 (비동기적 처리)
 Produce를 하면 Consumer가 받아와서 Message를 처리하는 것
