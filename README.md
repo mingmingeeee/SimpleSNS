@@ -75,7 +75,7 @@ Produce를 하면 Consumer가 받아와서 Message를 처리하는 것
 
 join해서 알림 entity 가져오는 쿼리한 개,
 
-이 결과 값이 n개라고 하면 user의 row마다 총 n개의 쿼리 날아감
+이 결과 값이 n개라고 하면  user의 row마다 총 n개의 쿼리 날아감
 
 == n + 1
 
