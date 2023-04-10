@@ -22,8 +22,7 @@ DB: query | Cashing: Key-value
 ### 기존 문제점 
 [ ] token 인증시 User 조회, 그 이후 또 user 조회
 => 인증 과정에서 2번의 DB I/O 발생
-[ ] DB에 User 있는지 확인
-token에서 username 추출, "username" DB에서 조회
+(1) token에서 username 추출, "username" DB에서 조회
 (2) create할 때 또 userName으로 DB I/O 발생
 
 [ ] 매 API 요청시마다 User 조회
@@ -52,7 +51,7 @@ DB select, 외부 API call과 같은 무거운 작업들일 때 중복된 것 �
 
 1. Cache(Redis) 사용
 변하지 않는 데이터들 조회 위해 캐시 사용
-![4545](https://user-images.githubusercontent.com/45472076/230905903-2fa08302-d71e-40be-bf15-13ad7db9290e.PNG)
+!(https://user-images.githubusercontent.com/45472076/230905903-2fa08302-d71e-40be-bf15-13ad7db9290e.PNG)
 
 2. Kafka 사용 (비동기적 처리)
 Produce를 하면 Consumer가 받아와서 Message를 처리하는 것
