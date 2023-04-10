@@ -86,3 +86,9 @@ join해서 알림 entity 가져오는 쿼리한 개,
 
 user 사용 전까지는 불리지 않음
 
+## Delete 문제 (JPA 사용시) 
+JPA: 영속성 관리 (Application에서 DB의 Life Cycle 관리)
+
+삭제할 data 가져온 후 삭제함 => 가져올 필요가 없는 data인데 왜 굳이 가져와서 삭제해야 함?
+
+===> JPA에서 사용하지 말고 쿼리 직접 작성하는 것이 좋음
