@@ -80,7 +80,9 @@ join해서 알림 entity 가져오는 쿼리한 개,
 == n + 1
 
 - fetch.eager
--- 즉시 가져옴 (user를 사용하든 하지 않든)
+
+즉시 가져옴 (user를 사용하든 하지 않든)
 - fetch.lazy
--- user 사용 전까지는 불리지 않음
+
+user 사용 전까지는 불리지 않음
 
