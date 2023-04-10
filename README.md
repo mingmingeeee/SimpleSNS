@@ -73,10 +73,14 @@ Produce를 하면 Consumer가 받아와서 Message를 처리하는 것
 
 알람 + user 한 개의 쿼리를 가져오는 걸 기대했지만
 
-알림 1번 쿼리한 개,
+join해서 알림 entity 가져오는 쿼리한 개,
 
 이 결과 값이 n개라고 하면 user의 row마다 총 n개의 쿼리 날아감
 
 == n + 1
 
+- fetch.eager
+-- 즉시 가져옴 (user를 사용하든 하지 않든)
+- fetch.lazy
+-- user 사용 전까지는 불리지 않음
 
