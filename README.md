@@ -22,11 +22,11 @@ DB: query | Cashing: Key-value
 ### 기존 문제점 
 - [ ] token 인증시 User 조회, 그 이후 또 user 조회
 
-=> 인증 과정에서 2번의 DB I/O 발생
+  => 인증 과정에서 2번의 DB I/O 발생
 
-(1) token에서 username 추출, "username" DB에서 조회
+  (1) token에서 username 추출, "username" DB에서 조회
 
-(2) create할 때 또 userName으로 DB I/O 발생
+  (2) create할 때 또 userName으로 DB I/O 발생
 
 - [ ] 매 API 요청시마다 User 조회
 - [ ] 
