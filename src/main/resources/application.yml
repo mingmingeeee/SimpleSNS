@@ -16,3 +16,7 @@ spring.jpa:
 jwt:
   secret-key: minjeong.sns-2023.secret_key.more.more
   token.expired-time-ms: 2592000000 # 24*60*60*30 -> 30?
+
+spring.redis.url: redis://svc.sel3.cloudtype.app:31231
+
+# yml 사용하는 이유: 결합성 줄이기 위해

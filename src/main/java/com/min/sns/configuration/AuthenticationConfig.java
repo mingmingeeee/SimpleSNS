@@ -24,7 +24,8 @@ public class AuthenticationConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().regexMatchers("^(?!/api).*"); // filter ignore (authentication 으로 넘어가지 않게 하는)
+        web.ignoring().regexMatchers("^(?!/api).*")
+                .antMatchers("/api/*/users/join", "/api/*/users/login"); // filter ignore (authentication 으로 넘어가지 않게 하는)
         // "/api"로 시작하는 path 들만 통과 => 아닌 것들은 ignoring
     }
 
@@ -32,7 +33,6 @@ public class AuthenticationConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/*/users/join", "/api/*/users/login").permitAll()
                 .antMatchers("/api/**").authenticated()
                 .and()
                 .sessionManagement()
