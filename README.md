@@ -28,7 +28,7 @@ DB: query | Cashing: Key-value
 
   (2) create할 때 또 userName으로 DB I/O 발생
 
-- [ ] 매 API 요청시마다 User 조회
+- [x] 매 API 요청시마다 User 조회
 
   어떤 작업이 cost, 부하가 많이 드는지 고려하기
 
@@ -38,11 +38,11 @@ DB: query | Cashing: Key-value
 
   조금의 지연이 일어나도 괜찮음 => 분리시키기
 
-- [ ] Alarm List API를 호출해야만 갱신되는 알람 목록 (새로고침해야 알람이 있음)
+- [x] Alarm List API를 호출해야만 갱신되는 알람 목록 (새로고침해야 알람이 있음)
 
   업데이트가 없을 수도 있는데 계속 해줘야 해서 서버 부하 있을 듯
 
-- [ ] DB Query들이 최적화 되어있을까
+- [x] DB Query들이 최적화 되어있을까
 
   JPA (객체화): Query를 직접 작성하는 게 아니라
 
