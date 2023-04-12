@@ -115,3 +115,28 @@ JPA: 영속성 관리 (Application에서 DB의 Life Cycle 관리)
 
 ### WebSocket
 - 서버에서 웹브라우저 사이 양방향 통신 가능
+
+
+## Kafka (메시징 큐)
+![77](https://user-images.githubusercontent.com/45472076/231314704-9492f1e6-ebe6-4114-a830-63aa8447e966.PNG)
+1. Producer: 메시지 생성
+
+Event(메시지) 생성할 때 **Key** 설정
+
+- Key: 메시지가 어떻게 파티션이 될 지 정하는 값
+- Topic: topic을 중심으로 메시지 생성, 그 topic에서 메시지 소비
+
+  => Producer와 Consumer를 이어주는 key같은 값
+  
+  => 순서 보장을 위해 Key값이 같아야 함 => Consumer는 파티션을 차례대로 읽음
+
+
+2. Broker: producer가 생성한 메시지 저장
+3. Consumer: 메시지 소비
+
+   => Consumer Group: 같은 Topic을 나눠서 읽음 (처리)
+   
+   => Consumer는 나 읽었어~ 하는 ack 보내줌
+
+### RabbitMQ
+메시징 큐 
