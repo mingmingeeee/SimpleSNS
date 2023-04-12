@@ -7,6 +7,8 @@ import com.min.sns.model.AlarmType;
 import com.min.sns.model.Comment;
 import com.min.sns.model.Post;
 import com.min.sns.model.entity.*;
+import com.min.sns.model.event.AlarmEvent;
+import com.min.sns.producer.AlarmProducer;
 import com.min.sns.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -24,6 +26,8 @@ public class PostService {
     private final LikeEntityRepository likeEntityRepository;
     private final CommentEntityRepository commentEntityRepository;
     private final AlarmRepository alarmRepository;
+    private final AlarmService alarmService;
+    private final AlarmProducer alarmProducer;
 
     @Transactional
     public void create(String title, String body, String userName) {
@@ -98,9 +102,8 @@ public class PostService {
         // 4. like.save
         likeEntityRepository.save(LikeEntity.of(postEntity, userEntity));
 
-        // (post를 작성한 사람) ,,,, AlarmArgs(like 단 사람, postId)
-        alarmRepository.save(AlarmEntity.of(postEntity.getUser(), AlarmType.NEW_LIKE_ONE_POST, new AlarmArgs(userEntity.getId(), postEntity.getId())));
-
+        // alarm 발생했다고 보내줌
+        alarmProducer.send(new AlarmEvent(postEntity.getUser().getId(), AlarmType.NEW_LIKE_ONE_POST, new AlarmArgs(userEntity.getId(), postEntity.getId())));
     }
 
     public long likeCount(Integer postId) {
@@ -120,7 +123,8 @@ public class PostService {
         commentEntityRepository.save(CommentEntity.of(postEntity, userEntity, comment));
 
         // (post를 작성한 사람) ,,,, AlarmArgs(comment 단 사람, postId)
-        alarmRepository.save(AlarmEntity.of(postEntity.getUser(), AlarmType.NEW_COMMENT_ON_POST, new AlarmArgs(userEntity.getId(), postEntity.getId())));
+        // alarm 발생했다고 보내줌
+        alarmProducer.send(new AlarmEvent(postEntity.getUser().getId(), AlarmType.NEW_COMMENT_ON_POST, new AlarmArgs(userEntity.getId(), postEntity.getId())));
     }
 
     private PostEntity getPostOrException(Integer postId) {

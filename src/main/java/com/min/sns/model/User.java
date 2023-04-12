@@ -23,7 +23,7 @@ import java.util.List;
 public class User implements UserDetails {
 
     private Integer id;
-    private String userName;
+    private String username;
     private String password;
     private UserRole userRole;
     private Timestamp registeredAt;
@@ -49,12 +49,6 @@ public class User implements UserDetails {
     @JsonIgnore // 무시
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(this.getUserRole().toString()));
-    }
-
-    @Override
-    @JsonIgnore
-    public String getUsername() {
-        return this.userName;
     }
 
     @Override

@@ -36,10 +36,10 @@ public class UserService {
     @Value("${jwt.token.expired-time-ms}")
     private long expiredTimeMs;
 
-    public User loadUserByUserName(String userMame) {
-        return userCacheRepository.getUser(userMame).orElseGet(() -> // 없으면 DB에서 직접 들고 오기
-            userEntityRepository.findByUserName(userMame).map(User::fromEntity).orElseThrow(() ->
-                new SnsApplicationException(ErrorCode.USER_NOT_FOUND, String.format("%s not founded", userMame))
+    public User loadUserByUserName(String userName) {
+        return userCacheRepository.getUser(userName).orElseGet(() -> // 없으면 DB에서 직접 들고 오기
+            userEntityRepository.findByUserName(userName).map(User::fromEntity).orElseThrow(() ->
+                new SnsApplicationException(ErrorCode.USER_NOT_FOUND, String.format("%s not founded", userName))
             )
         );
     }
